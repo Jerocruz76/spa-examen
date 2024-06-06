@@ -9,6 +9,8 @@ export function Register(){
             <input type="text" id="registerName" placeholder="Enter your name">
             <input type="email" id="registerEmail" placeholder="Enter your email">
             <input type="password" id="registerPass" placeholder="Enter your password">
+            <label for="userDate">Choose your born date</label>
+            <input type="date" id="userDate"> 
             <button type="submit">Register</button>
         </form>
         <a href="/login">Already have an account</a>
@@ -18,12 +20,13 @@ export function Register(){
     const $inputRegisterName = document.getElementById('registerName')
     const $inputRegisterEmail = document.getElementById('registerEmail')
     const $inputRegisterPass = document.getElementById('registerPass')
+    const $inputRegisterDate = document.getElementById('userDate')
     const $registerForm = document.querySelectorAll('form')[0]
 
     $registerForm.addEventListener('submit', async (event)=>{
         event.preventDefault()
         
-        if(!$inputRegisterName.value || !$inputRegisterEmail.value || !$inputRegisterPass.value){
+        if(!$inputRegisterName.value || !$inputRegisterEmail.value || !$inputRegisterPass.value || !$inputRegisterDate.value){
             alert("Please fill all fields")
             return
         }
@@ -34,7 +37,10 @@ export function Register(){
             body: JSON.stringify({
                 name: $inputRegisterName.value,
                 email: $inputRegisterEmail.value,
-                password: $inputRegisterPass.value
+                password: $inputRegisterPass.value,
+                bornDate: $inputRegisterDate.value,
+                role: "user",
+                id: "2"
             })
         })
 

@@ -89,7 +89,7 @@ module.exports = {
       directory: path.join(__dirname, 'dist') // Directorio de salida
     },
     compress: true, // Habilita la compresión
-    port: 9000, // Puerto del servidor
+    port: 3001, // Puerto del servidor
     historyApiFallback: { // Habilita el enrutamiento de aplicaciones de una sola página
       index: '/index.html', // super importante para que funcione el enrutamiento de aplicaciones de una sola página
     }

@@ -1,8 +1,52 @@
 {
-    "users": [
-
-    ],
-    "bookings":[
-        
-    ]
+  "roles": [
+    {
+      "id": "1",
+      "role": "admin"
+    },
+    {
+      "id": "2",
+      "role": "user"
+    }
+  ],
+  "users": [
+    {
+      "id": "1",
+      "name": "Jeronimo",
+      "email": "jerocruz76@gmail.com",
+      "password": "hola123",
+      "bornDate": "2005-05-19",
+      "role": "admin"
+    },
+    {
+      "id": "2",
+      "name": "Vicky",
+      "email": "Vicky@gmail.com",
+      "password": "riwi2023",
+      "bornDate": "2024-06-04",
+      "role": "user"
+    }
+  ],
+  "bookings": [
+    {
+      "id": "4282",
+      "ID": "1",
+      "number": "24",
+      "origin": "Medellín",
+      "destination": "Bogotá",
+      "departure": "2024-06-19",
+      "arrival": "2024-06-20",
+      "capacity": "35"
+    },
+    {
+      "id": "cc41",
+      "ID": "4",
+      "number": "6775",
+      "origin": "Cartagena",
+      "destination": "La Guajira",
+      "departure": "2024-06-26",
+      "arrival": "2024-06-27",
+      "capacity": "45"
+    }
+  ]
 }
