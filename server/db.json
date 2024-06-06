@@ -27,26 +27,5 @@
       "role": "user"
     }
   ],
-  "bookings": [
-    {
-      "id": "4282",
-      "ID": "1",
-      "number": "24",
-      "origin": "Medellín",
-      "destination": "Bogotá",
-      "departure": "2024-06-19",
-      "arrival": "2024-06-20",
-      "capacity": "35"
-    },
-    {
-      "id": "cc41",
-      "ID": "4",
-      "number": "6775",
-      "origin": "Cartagena",
-      "destination": "La Guajira",
-      "departure": "2024-06-26",
-      "arrival": "2024-06-27",
-      "capacity": "45"
-    }
-  ]
+  "bookings": []
 }

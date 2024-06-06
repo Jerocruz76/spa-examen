@@ -1,40 +1,58 @@
 import { fetchApi } from "../../../../helpers/fetchApi"
+import { navigateTo } from "../../../../router"
 
 export function editTravel(){
-    const travelInfo = JSON.parse(sessionStorage.getItem('travelInfo') || '{}')
-    const {id, number, origin, destination, departure, arrival, capacity} = travelInfo
+    const travelInfo = JSON.parse.toString(sessionStorage.getItem('travelInfo')||'{}')
+    const { id , departure , arrival , capacity } = travelInfo
 
-    const root = document.getElementById('root')
-    root.innerHTML=`
-    <h1>Edit travel</h1>
-    <form>
-        <h2>Origin date</h2>
-        <input type="date" name="newOriginDate">
-        <h2>Arrive date</h2>
-        <input type="date" name="newArriveDate">
-        <h2>Capacity</h2>
-        <input type="number" name="newCapacity">
-        <button type="submit">Submit</button>
-    </form>
+    const pageContent =`
+    <div class="container">
+        <h1>Edit travel</h1>
+        <form id="editTravelForm">
+            <h2>Departure</h2>
+            <input type="date" id="departure" name="departure" value="${departure}" disabled>
+            <h2>Arrival</h2>
+            <input type="date" id ="arrival" name="arrival" value="${arrival}" disabled>
+            <h2>Capacity</h2>
+            <input type="number" id="capacity" name="capacity" value="${capacity}" disabled>
+            <button type="submit">Save</button>
+        </form>
+    </div>
     `
 
-    const $editForm = document.querySelectorAll('form')[0]
-    $editForm.addEventListener('submit', async(e)=>{
-        e.preventDefault()
+    const logic = () => {
+        const form = document.getElementById('editTravelForm')
+        form.addEventListener('submit', async(event)=>{
+            event.preventDefault()
 
-        const travelUpdate = {
-            departure: $editForm.elements.newOriginDate.value,
-            arrive: $editForm.elements.newArriveDate.value,
-            capacity: $editForm.elements.newCapacity.value
-        }
+            const updatedTravel = {
+                departure: form.elements.departure.value,
+                arrival: form.arrival.value,
+                capacity: form.capacity.value
+            }
 
-        try{
-            const response = await fetchApi(`http://localhost:3000/bookings/${id}`,{
-                method:'PUT',
-                headers:{'Content-Type':'application/json'},
-                body: JSON.stringify(travelUpdate)
-            })
-        }catch{}
+            try{
+                const response = await fetchApi(`http://localhost:3000/bookings/${id}`,{
+                    method: 'PUT',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(updatedTravel)
+                })
 
-    })
+                if(response){
+                    navigateTo('/home')
+                }else{
+                    throw new Error('Something went wrong', error)
+                }
+            }catch(error){
+                throw new Error('Something went wrong', error)
+            }
+        })
+    }
+
+    return{
+        pageContent,
+        logic
+    }
 }
